@@ -20,7 +20,11 @@ objects = ft_isalnum.o\
 	ft_strnstr.o\
 	ft_atoi.o\
 	ft_calloc.o\
-	ft_strdup.o
+	ft_strdup.o\
+	ft_substr.o\
+	ft_strjoin.o\
+	ft_strtrim.o\
+	ft_split.o
 FLAGS = -Wall -Werror -Wextra
 CC	= 	gcc
 RM	= 	rm -f

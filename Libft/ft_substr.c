@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 13:38:55 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/19 17:36:58 by omoreno-         ###   ########.fr       */
+/*   Created: 2022/09/19 15:04:10 by omoreno-          #+#    #+#             */
+/*   Updated: 2022/09/19 15:41:04 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strdup(const char *s1)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	void	*s2;
-	int		len;
+	char	*p;
+	char	*ss;
+	size_t	s_len;
+	size_t	ss_len;
 
-	len = ft_strlen(s1);
-	s2 = malloc(len + 1);
-	if (s2)
-		ft_memcpy(s2, s1, len + 1);
-	return (s2);
+	s_len = ft_strlen(s);
+	ss_len = s_len - start;
+	if (ss_len <= 0)
+		return (0);
+	if (ss_len > len)
+		ss_len = len;
+	p = (char *)s;
+	p += start;
+	ss = malloc(ss_len + 1);
+	if (ss)
+	{
+		ft_memcpy(ss, p, ss_len + 1);
+		return (ss);
+	}
+	return (0);
 }
