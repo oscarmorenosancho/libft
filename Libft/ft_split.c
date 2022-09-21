@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:29:23 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/19 18:01:07 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:55:43 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ char	**ft_split(char const *s, char c)
 		i = 0;
 		while (i < count)
 		{
-			p = ft_next_substr(&p, c, sl);
+			p = ft_next_substr(&p, c, sl + i);
 			if (p == 0)
 			{
 				free(sl);
