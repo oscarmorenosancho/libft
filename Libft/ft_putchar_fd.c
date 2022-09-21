@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 18:01:00 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/20 11:28:00 by omoreno-         ###   ########.fr       */
+/*   Created: 2022/09/21 10:01:23 by omoreno-          #+#    #+#             */
+/*   Updated: 2022/09/21 10:12:55 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-int	ft_isprint(int c)
+void	ft_putchar_fd(char c, int fd)
 {
-	return (c >= ' ' && c < 127);
+	write(fd, &c, 1);
 }

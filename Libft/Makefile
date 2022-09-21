@@ -10,6 +10,7 @@ objects = ft_isalnum.o\
 	ft_strncmp.o\
 	ft_memset.o\
 	ft_bzero.o\
+	ft_memcmp.o\
 	ft_memcpy.o\
 	ft_memmove.o\
 	ft_tolower.o\
@@ -24,23 +25,31 @@ objects = ft_isalnum.o\
 	ft_substr.o\
 	ft_strjoin.o\
 	ft_strtrim.o\
-	ft_split.o
+	ft_split.o\
+	ft_itoa.o\
+	ft_strmapi.o\
+	ft_striteri.o\
+	ft_putchar_fd.o\
+	ft_putstr_fd.o\
+	ft_putendl_fd.o\
+	ft_putnbr_fd.o
 FLAGS = -Wall -Werror -Wextra
 CC	= 	gcc
 RM	= 	rm -f
 LIBC	= 	ar -rcs
 FLAGS	= 	-Wall -Wextra -Werror
 
+all : $(NAME)
+
 .c.o :
 	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
 $(NAME) : $(objects)
 	$(LIBC) $(NAME) $(objects)
-all : $(NAME)
 $(objects) : libft.h
 clean :
-	rm $(objects)
+	$(RM) $(objects)
 fclean : clean
-	rm $(NAME)
+	$(RM) $(NAME)
 re: fclean all
 .PHONY : clean fclean re

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:53:46 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/17 21:25:09 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:27:11 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,11 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 			i++;
 		}
 		if (i < dstsize)
-		{
 			dst[i] = 0;
-			return (i + 1);
-		}
 		else
-		{
 			dst[dstsize - 1] = 0;
-			return (dstsize);
-		}
+		return (i);
 	}
 	else
-		return (0);
+		return (ft_strlen(src));
 }
