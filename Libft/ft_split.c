@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:29:23 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/21 17:55:43 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/22 18:08:17 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,89 +38,66 @@ size_t	ft_str_count(char const *s, char c)
 	return (count);
 }
 
-char	*ft_next_substr(char **s, char c, char **sl)
+char	*ft_next_substr(const char *s, char c, size_t *index)
 {
-	char	*ps;
-	char	*pe;
+	size_t	start;
 	size_t	size;
 
-	ps = *s;
-	while (*ps && *ps == c)
-		ps++;
-	pe = ps;
-	while (*pe && *pe != c)
-		pe++;
-	size = pe - ps;
-	*s = ps;
-	*sl = (char *)malloc(size + 1);
-	if (*sl)
-	{
-		ft_memcpy(*sl, ps, size);
-		sl[size] = 0;
-		return (pe + 1);
-	}
-	return (0);
+	while (s[*index] && s[*index] == c)
+		(*index)++;
+	start = *index;
+	while (s[*index] && s[*index] != c)
+		(*index)++;
+	size = *index - start;
+	(*index)++;
+	return (ft_substr(s, start, size));
 }
 
-void	ft_reset_array(void **s, size_t n)
+void	ft_free_array(void **s_arr, size_t n)
 {
 	char	**p;
 	char	**pe;
 
-	p = (char **)s;
-	pe = p + n;
-	while (p < pe)
+	if (s_arr)
 	{
-		*p = 0;
-		p++;
-	}
-}
-
-void	ft_free_array(void **s, size_t n)
-{
-	char	**p;
-	char	**pe;
-
-	if (s)
-	{
-		p = (char **)s;
+		p = (char **)s_arr;
 		pe = p + n;
 		while (p < pe)
 		{
 			if (*p)
-				free(*p);
-			*p = 0;
+				free((void *)*p);
+			*p = NULL;
 			p++;
 		}
-		free(s);
+		free(s_arr);
 	}
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**sl;
-	char	*p;
 	size_t	count;
+	size_t	index;
 	size_t	i;
 
-	p = (char *)s;
 	count = ft_str_count(s, c);
-	sl = (char **) malloc((count + 1) * sizeof(char *));
+	index = 0;
+	sl = (char **) ft_calloc(count + 1, sizeof(char *));
 	if (sl)
 	{
-		ft_reset_array((void **) sl, (count + 1));
+		sl[count] = NULL;
 		i = 0;
 		while (i < count)
 		{
-			p = ft_next_substr(&p, c, sl + i);
-			if (p == 0)
+			sl[i] = ft_next_substr(s, c, &index);
+			if (! sl[i])
 			{
-				free(sl);
-				return (0);
+				ft_free_array((void **)sl, count);
+				return (NULL);
 			}
 			i++;
 		}
 		return (sl);
 	}
-	return (0);
+	return (NULL);
 }
