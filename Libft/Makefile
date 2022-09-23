@@ -1,5 +1,5 @@
 NAME = libft.a
-objects = ft_isalnum.o\
+OBJ = ft_isalnum.o\
 	ft_isalpha.o\
 	ft_isascii.o\
 	ft_isdigit.o\
@@ -33,6 +33,15 @@ objects = ft_isalnum.o\
 	ft_putstr_fd.o\
 	ft_putendl_fd.o\
 	ft_putnbr_fd.o
+OBJB = ft_lstnew.o\
+	ft_lstadd_front.o\
+	ft_lstsize.o\
+	ft_lstlast.o\
+	ft_lstadd_back.o\
+	ft_lstdelone.o\
+	ft_lstclear.o\
+	ft_lstiter.o\
+	ft_lstmap.o
 FLAGS = -Wall -Werror -Wextra
 CC	= 	gcc
 RM	= 	rm -f
@@ -44,11 +53,15 @@ all : $(NAME)
 .c.o :
 	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
-$(NAME) : $(objects)
-	$(LIBC) $(NAME) $(objects)
-$(objects) : libft.h
+$(NAME) : $(OBJ)
+	$(LIBC) $(NAME) $(OBJ)
+bonus: $(OBJB)
+	$(LIBC) $(NAME) $(OBJB)
+$(OBJ) : libft.h
+$(OBJB) : libft.h
 clean :
-	$(RM) $(objects)
+	$(RM) $(OBJ)
+	$(RM) $(OBJB)
 fclean : clean
 	$(RM) $(NAME)
 re: fclean all
