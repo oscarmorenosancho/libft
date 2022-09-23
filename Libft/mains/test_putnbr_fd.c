@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   test_putnbr_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 10:17:32 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/23 17:54:58 by omoreno-         ###   ########.fr       */
+/*   Created: 2022/09/23 17:55:45 by omoreno-          #+#    #+#             */
+/*   Updated: 2022/09/23 18:00:47 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <printf.h>
+#include "../libft.h"
 
-size_t	ft_utobuf(unsigned int nb, char *buf);
-
-void	ft_putnbr_fd(int n, int fd)
+int	main(int argc, char **argv)
 {
-	char		neg;
-	long int	aux;
-	size_t		len;
-	char		buf[12];
-	char		*p;
+	int		i;
+	int		nbr;
 
-	p = buf;
-	neg = (n < 0);
-	aux = (long int) n;
-	if (neg)
+	if (argc > 1)
 	{
-		aux = -aux;
-		buf[0] = '-';
-		p++;
+		i = 1;
+		while (i < argc)
+		{
+			printf("%s\n", argv[i]);
+			i++;
+		}
+		nbr = ft_atoi(argv[1]);
+		printf("nbr: %d\n", nbr);
+		ft_putnbr_fd(nbr, 1);
 	}
-	len = ft_utobuf ((unsigned int)aux, p);
-	p[len] = 0;
-	ft_putstr_fd(buf, fd);
 }

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:34:20 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/22 19:23:07 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/23 17:41:16 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,47 +22,19 @@ char	ft_get_last_digit(unsigned int *n, unsigned int base)
 	return (ls);
 }
 
-size_t	ft_utoa(unsigned int nb, char *buf)
+size_t	ft_utobuf(unsigned int nb, char *buf)
 {
-	unsigned int	i;
-	char			store[11];
 	unsigned int	restant_digits;
-	unsigned int	s;
 	size_t			ret;
+	char			digit;
 
+	ret = 0;
 	restant_digits = nb;
-	i = 0;
-	s = 0;
-	while (restant_digits > 0 || i == 0)
-	{
-		store[i] = ft_get_last_digit(&restant_digits, 10);
-		if (restant_digits <= 0)
-			s = i;
-		i++;
-	}
-	i = 0;
-	ret = s;
-	while (s >= 0)
-	{
-		buf[i] = ('0' + store[s]);
-		s--;
-		i++;
-	}
-	return (ret);
-}
-
-char	*ft_set_new_str(char *buf, size_t len)
-{
-	char		*p;
-
-	p = (char *)malloc(len + 1);
-	if (p)
-	{
-		ft_memcpy(p, buf, len);
-		p[len] = 0;
-		return (p);
-	}
-	return (NULL);
+	digit = '0' + ft_get_last_digit(&restant_digits, 10);
+	if (restant_digits > 0)
+		ret = ft_utobuf(restant_digits, buf);
+	buf[ret] = digit;
+	return (ret + 1);
 }
 
 char	*ft_itoa(int n)
@@ -82,8 +54,7 @@ char	*ft_itoa(int n)
 		buf[0] = '-';
 		p++;
 	}
-	len = ft_utoa ((unsigned int)aux, p);
-	if (neg)
-		len++;
-	return (ft_set_new_str(buf, len));
+	len = ft_utobuf ((unsigned int)aux, p);
+	p[len] = 0;
+	return (ft_strdup(buf));
 }
