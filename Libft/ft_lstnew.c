@@ -6,11 +6,11 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 18:57:38 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/23 19:09:08 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/24 11:46:50 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "_bonus.h"
 #include <stdlib.h>
 
 t_list	*ft_lstnew(void *content)

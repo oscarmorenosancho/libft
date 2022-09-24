@@ -6,11 +6,11 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:12:02 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/23 19:23:24 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/24 12:59:59 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "_bonus.h"
 
 int	ft_lstsize(t_list *lst)
 {
@@ -21,9 +21,8 @@ int	ft_lstsize(t_list *lst)
 	i = 0;
 	while (cur)
 	{
+		i++;
 		cur = cur->next;
-		if (cur)
-			i++;
 	}
 	return (i);
 }

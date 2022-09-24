@@ -6,11 +6,11 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:38:48 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/23 19:52:03 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/24 11:43:47 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "_bonus.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {

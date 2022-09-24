@@ -58,7 +58,7 @@ $(NAME) : $(OBJ)
 bonus: $(OBJB)
 	$(LIBC) $(NAME) $(OBJB)
 $(OBJ) : libft.h
-$(OBJB) : libft.h
+$(OBJB) : _bonus.h
 clean :
 	$(RM) $(OBJ)
 	$(RM) $(OBJB)

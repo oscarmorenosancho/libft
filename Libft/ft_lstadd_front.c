@@ -6,11 +6,11 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:08:15 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/23 19:32:49 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/24 11:39:38 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "_bonus.h"
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
