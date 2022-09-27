@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:56:38 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/27 18:28:01 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/27 19:26:47 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		curnew = ft_applyftonode(cur, curnew, &newlist, f);
 		if (!curnew && !newlist)
 			return (0);
-		if (curnew && cur->next)
-			cur = cur->next;
+		cur = cur->next;
 	}
 	if (! curnew && newlist)
 		ft_lstclear(&newlist, del);
