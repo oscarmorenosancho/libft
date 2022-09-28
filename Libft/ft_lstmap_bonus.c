@@ -6,33 +6,48 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 19:56:38 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/27 19:26:47 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/28 19:24:34 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_bonus.h"
 
-static t_list	*ft_applyftonode(t_list *curnode, t_list *newlistlast, \
-	t_list **newlist, void *(*f)(void *))
+static t_list	*ft_applyftonode(t_list *curnode, void *(*f)(void *), \
+	void (*del)(void *))
 {
-	t_list	*curnew;
+	t_list	*newnode;
+	void	*newcontent;
 
-	if (! curnode || ! f || ! newlist)
+	if (! curnode || ! f)
 		return (0);
-	curnew = ft_lstnew((*f)(curnode->content));
-	if (! curnew)
+	newcontent = (*f)(curnode->content);
+	if (! newcontent)
+		return (0);
+	newnode = ft_lstnew(newcontent);
+	if (! newnode)
+	{
+		(*del)(newcontent);
+		return (0);
+	}
+	return (newnode);
+}
+
+static t_list	*ft_appendnewnode(t_list *newnode, t_list *newlistlast, \
+	t_list **newlist)
+{
+	if (! newnode || ! newlist)
 		return (0);
 	if (! *newlist)
-		*newlist = curnew;
+		*newlist = newnode;
 	else if (newlistlast)
-		newlistlast->next = curnew;
+		newlistlast->next = newnode;
 	else
 	{
 		newlistlast = ft_lstlast(*newlist);
 		if (newlistlast)
-		newlistlast->next = curnew;
+		newlistlast->next = newnode;
 	}
-	return (curnew);
+	return (newnode);
 }
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
@@ -40,13 +55,15 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*newlist;
 	t_list	*cur;
 	t_list	*curnew;
+	t_list	*newnode;
 
 	newlist = 0;
 	curnew = 0;
 	cur = lst;
 	while (cur && (! newlist || curnew))
 	{
-		curnew = ft_applyftonode(cur, curnew, &newlist, f);
+		newnode = ft_applyftonode(cur, f, del);
+		curnew = ft_appendnewnode(newnode, curnew, &newlist);
 		if (!curnew && !newlist)
 			return (0);
 		cur = cur->next;

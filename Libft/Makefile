@@ -55,7 +55,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJ)
 	$(LIBC) $(NAME) $(OBJ)
-bonus: $(OBJB)
+bonus: $(OBJB) $(NAME)
 	$(LIBC) $(NAME) $(OBJB)
 $(OBJ) : libft.h
 $(OBJB) : libft_bonus.h
