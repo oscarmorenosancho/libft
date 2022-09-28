@@ -6,12 +6,12 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 11:29:50 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/27 19:02:36 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/28 18:32:09 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft_bonus.h"
-#include "../libft.h"
+//#include "../Libft/libft.h"
+#include "../Libft/libft_bonus.h"
 #include <stdio.h>
 #include <stdlib.h>
 
