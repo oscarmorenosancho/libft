@@ -6,13 +6,13 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:14:55 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/20 16:04:25 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:48:48 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy_rev(void *dst, const void *src, size_t n)
+static void	*ft_memcpy_rev(void *dst, const void *src, size_t n)
 {
 	char	*pd;
 	char	*ps;

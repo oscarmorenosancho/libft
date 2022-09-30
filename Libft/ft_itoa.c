@@ -6,14 +6,14 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:34:20 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/23 17:41:16 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:53:14 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	ft_get_last_digit(unsigned int *n, unsigned int base)
+static char	ft_get_last_digit(unsigned int *n, unsigned int base)
 {
 	char	ls;
 

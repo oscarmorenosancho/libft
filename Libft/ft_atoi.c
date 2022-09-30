@@ -6,13 +6,13 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 09:35:56 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/19 13:30:27 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:46:08 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(char c)
+static int	ft_isspace(char c)
 {
 	int	ret;
 
@@ -21,7 +21,7 @@ int	ft_isspace(char c)
 	return (ret);
 }
 
-int	ft_take_sign(char **p)
+static int	ft_take_sign(char **p)
 {
 	int	sign;
 

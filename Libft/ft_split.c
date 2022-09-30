@@ -6,14 +6,14 @@
 /*   By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 16:29:23 by omoreno-          #+#    #+#             */
-/*   Updated: 2022/09/22 18:08:17 by omoreno-         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:55:33 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-size_t	ft_str_count(char const *s, char c)
+static size_t	ft_str_count(char const *s, char c)
 {
 	char	*p;
 	size_t	count;
@@ -38,7 +38,7 @@ size_t	ft_str_count(char const *s, char c)
 	return (count);
 }
 
-char	*ft_next_substr(const char *s, char c, size_t *index)
+static char	*ft_next_substr(const char *s, char c, size_t *index)
 {
 	size_t	start;
 	size_t	size;
@@ -53,7 +53,7 @@ char	*ft_next_substr(const char *s, char c, size_t *index)
 	return (ft_substr(s, start, size));
 }
 
-void	ft_free_array(void **s_arr, size_t n)
+static void	ft_free_array(void **s_arr, size_t n)
 {
 	char	**p;
 	char	**pe;
