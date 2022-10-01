@@ -61,7 +61,7 @@ $(NAME) : $(OBJ)
 	$(LIBC) $(NAME) $(OBJ)
 bonus: $(NAME) $(OBJB)
 	$(LIBC) $(NAME) $(OBJB)
--includes : $(DEPS) $(DEPSB)
+-include: $(DEPS) $(DEPSB)
 $(OBJ) : $(DEPS)
 $(OBJB) : $(DEPSB)
 clean :
