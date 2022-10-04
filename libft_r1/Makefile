@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:10:43 by omoreno-          #+#    #+#              #
-#    Updated: 2022/10/04 11:10:49 by omoreno-         ###   ########.fr        #
+#    Updated: 2022/10/04 16:18:14 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,15 +61,13 @@ OBJB := $(SRCB:.c=.o)
 DEPS = $(SRC:.c=.d)
 DEPSB = $(SRCB:.c=.d)
 CC	= 	gcc
-CFLAGS = -Wall -Werror -Wextra -MMD
+CFLAGS = -Wall -Werror -Wextra -MMD -MP
 RM	= 	rm -f
 LIBC	= 	ar -rcs
 HEADER = libft.h
 
-.c.o :
-	${CC} ${CFLAGS} -I $(HEADER) -c $< -o ${<:.c=.o}
-
-		
+%.o : %.c $(HEADER)
+	${CC} ${CFLAGS} -I ${HEADER} -c $< -o ${<:.c=.o}
 
 all : $(NAME) 
 
